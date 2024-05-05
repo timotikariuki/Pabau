@@ -14,6 +14,7 @@
 		F8D758C72BE78945004A89F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8D758C62BE78945004A89F9 /* Assets.xcassets */; };
 		F8D758CA2BE78945004A89F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8D758C82BE78945004A89F9 /* LaunchScreen.storyboard */; };
 		F8D758CD2BE78945004A89F9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D758CC2BE78945004A89F9 /* main.m */; };
+		F8D758D52BE7F45F004A89F9 /* ItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D758D42BE7F45E004A89F9 /* ItemTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		F8D758C92BE78945004A89F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F8D758CB2BE78945004A89F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F8D758CC2BE78945004A89F9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F8D758D32BE7F45E004A89F9 /* ItemTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemTableViewCell.h; sourceTree = "<group>"; };
+		F8D758D42BE7F45E004A89F9 /* ItemTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +75,8 @@
 				F8D758C82BE78945004A89F9 /* LaunchScreen.storyboard */,
 				F8D758CB2BE78945004A89F9 /* Info.plist */,
 				F8D758CC2BE78945004A89F9 /* main.m */,
+				F8D758D32BE7F45E004A89F9 /* ItemTableViewCell.h */,
+				F8D758D42BE7F45E004A89F9 /* ItemTableViewCell.m */,
 			);
 			path = Pabau;
 			sourceTree = "<group>";
@@ -148,6 +153,7 @@
 			files = (
 				F8D758C22BE7891A004A89F9 /* ViewController.m in Sources */,
 				F8D758BC2BE7891A004A89F9 /* AppDelegate.m in Sources */,
+				F8D758D52BE7F45F004A89F9 /* ItemTableViewCell.m in Sources */,
 				F8D758CD2BE78945004A89F9 /* main.m in Sources */,
 				F8D758BF2BE7891A004A89F9 /* SceneDelegate.m in Sources */,
 			);
