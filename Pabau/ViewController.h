@@ -7,7 +7,14 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface ViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+
+typedef NS_ENUM(NSInteger, PaymentStatus) {
+    COMPLETED,
+    UNPAID,
+    PART_PAID
+};
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgLogo;
 @property (weak, nonatomic) IBOutlet UILabel *lblAmount;
@@ -34,7 +41,7 @@
 - (IBAction)onBtnMessage:(id)sender;
 - (IBAction)onBtnPrint:(id)sender;
 
+- (void) changeStatus:(PaymentStatus)status;
 
-- (void)changeStatus;
 @end
 
