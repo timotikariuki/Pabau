@@ -29,6 +29,52 @@
     
     [self.btnMessage setHidden:YES];
     
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationChanged:) name:UIDeviceOrientationDidChangeNotification object:nil];
+        
+        UIDeviceOrientation currentOrientation = [[UIDevice currentDevice] orientation];
+        [self handleOrientation:currentOrientation];
+    }
+    
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
+}
+
+- (void)orientationChanged:(NSNotification *)notification {
+    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+    [self handleOrientation:orientation];
+}
+
+- (void)handleOrientation:(UIDeviceOrientation)orientation {
+    
+    BOOL isLandscape = NO;
+    switch (orientation) {
+        case UIDeviceOrientationPortrait:
+        case UIDeviceOrientationPortraitUpsideDown:
+            isLandscape = NO;
+            break;
+        case UIDeviceOrientationLandscapeLeft:
+        case UIDeviceOrientationLandscapeRight:
+            isLandscape = YES;
+            break;
+        default:
+            NSLog(@"Unknown orientation");
+            break;
+    }
+    
+    [self.landscapeLeftViewTrailingConstraint setActive:isLandscape];
+    [self.landscapeLeftViewBottomConstraint setActive:isLandscape];
+    [self.landscapeRightViewTopConstraint setActive:isLandscape];
+    
+    [self.portraitLeftViewBottomConstraint setActive:!isLandscape];
+    [self.portraitLeftViewTrailingConstraint setActive:!isLandscape];
+    [self.portraitRightViewLeadingConstraint setActive:!isLandscape];
+    
 }
 
 
