@@ -31,13 +31,24 @@
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationChanged:) name:UIDeviceOrientationDidChangeNotification object:nil];
-        
-        UIDeviceOrientation currentOrientation = [[UIDevice currentDevice] orientation];
-        [self handleOrientation:currentOrientation];
     }
     
 }
 
+-(void)viewDidLayoutSubviews {
+    
+    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+    if (orientation == UIDeviceOrientationUnknown) {
+        CGSize screenSize = [UIScreen mainScreen].bounds.size;
+        if (screenSize.height > screenSize.width) {
+            orientation = UIDeviceOrientationPortrait;
+        } else {
+            orientation = UIDeviceOrientationLandscapeLeft;
+        }
+    }
+    [self handleOrientation:orientation];
+    
+}
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
@@ -53,6 +64,7 @@
 - (void)handleOrientation:(UIDeviceOrientation)orientation {
     
     BOOL isLandscape = NO;
+    BOOL isUnknown = NO;
     switch (orientation) {
         case UIDeviceOrientationPortrait:
         case UIDeviceOrientationPortraitUpsideDown:
@@ -64,16 +76,22 @@
             break;
         default:
             NSLog(@"Unknown orientation");
+            isUnknown = YES;
             break;
     }
     
-    [self.landscapeLeftViewTrailingConstraint setActive:isLandscape];
-    [self.landscapeLeftViewBottomConstraint setActive:isLandscape];
-    [self.landscapeRightViewTopConstraint setActive:isLandscape];
-    
-    [self.portraitLeftViewBottomConstraint setActive:!isLandscape];
-    [self.portraitLeftViewTrailingConstraint setActive:!isLandscape];
-    [self.portraitRightViewLeadingConstraint setActive:!isLandscape];
+    if (!isUnknown) {
+        [self.landscapeLeftViewTrailingConstraint setActive:isLandscape];
+        [self.landscapeLeftViewBottomConstraint setActive:isLandscape];
+        [self.landscapeRightViewTopConstraint setActive:isLandscape];
+        
+        [self.portraitLeftViewBottomConstraint setActive:!isLandscape];
+        [self.portraitLeftViewTrailingConstraint setActive:!isLandscape];
+        [self.portraitRightViewLeadingConstraint setActive:!isLandscape];
+        
+        [self updateViewConstraints];
+        [self.view layoutIfNeeded];
+    }
     
 }
 
