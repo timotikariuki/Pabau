@@ -7,6 +7,7 @@
 
 #import "ViewController.h"
 #import "ItemTableViewCell.h"
+#import "PaymentTableViewCell.h"
 
 @interface ViewController ()
 
@@ -17,11 +18,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.itemTable.dataSource = self;
-    self.itemTable.delegate = self;
-    self.itemTable.contentInset = UIEdgeInsetsZero;
-    self.itemTable.scrollIndicatorInsets = UIEdgeInsetsZero;
+    
+    self.paymentTypes = @[@"Subtotal", @"Discount", @"Tax", @"Cash", @"Card", @"Bank Transfer", @"Total"];
+    self.paymentAmounts = @[@"£181.50", @"£0", @"£4.33", @"£10.00", @"10.00", @"£161.50", @"£181.50"];
+    
+    // For Products list
+    self.productTable.dataSource = self;
+    self.productTable.delegate = self;
+    self.productTable.contentInset = UIEdgeInsetsZero;
+    self.productTable.scrollIndicatorInsets = UIEdgeInsetsZero;
         
+    // For Payments list
+    self.paymentsTable.dataSource = self;
+    self.paymentsTable.delegate = self;
+    self.paymentsTable.contentInset = UIEdgeInsetsZero;
+    self.paymentsTable.scrollIndicatorInsets = UIEdgeInsetsZero;
+    
+    
 //    // hide Next Appointment
 //    [self.viewNextAppointment setHidden:YES];
     
@@ -97,27 +110,6 @@
 
 
 
-- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    ItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ItemTableViewCellIdentifier"];
-    if (cell == nil) {
-        cell = [[ItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ItemTableViewCellIdentifier"];
-    }
-    cell.lblItemName.text = @"Hydrafacial";
-    cell.lblFrom.text = @"With Mel Pabau";
-    cell.lblAmount.text = @"£120.00";
-    cell.lblNumber.text = @"1";
-    return cell;
-}
-
-- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return the desired height for each row
-    return 70.0; // Adjust this value as needed
-}
-
 - (IBAction)onBtnPrint:(id)sender {
 }
 
@@ -187,6 +179,65 @@
     
     [self.viewStatus.layer setBorderWidth:1.0f];
     [self.viewStatus.layer setCornerRadius: 2.0f];
+}
+
+
+#pragma TableView Datasouce
+
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    UITableViewCell *cell = [[UITableViewCell alloc] init];
+        
+    if (tableView == self.productTable) {
+        ItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ItemTableViewCellIdentifier"];
+        if (cell == nil) {
+            cell = [[ItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ItemTableViewCellIdentifier"];
+        }
+        cell.lblItemName.text = @"Hydrafacial";
+        cell.lblFrom.text = @"With Mel Pabau";
+        cell.lblAmount.text = @"£120.00";
+        cell.lblNumber.text = @"1";
+        return cell;
+    } else if (tableView == self.paymentsTable) {
+        PaymentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PaymentTableViewCellIdentifier"];
+        if (cell == nil) {
+            cell = [[PaymentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"PaymentTableViewCellIdentifier"];
+        }
+        cell.lblPaymentType.text = self.paymentTypes[indexPath.row];
+        cell.lblAmount.text = self.paymentAmounts[indexPath.row];
+
+        if (indexPath.row == (self.paymentTypes.count - 1)) {
+            UIColor *textColor = [UIColor colorWithRed:61/255.0f green:61/255.0f blue:70/255.0f alpha:1.0];
+            UIFont *font = cell.lblPaymentType.font;
+            font = [UIFont systemFontOfSize:font.pointSize + 1 weight:UIFontWeightMedium];
+            [cell.lblPaymentType setFont:font];
+            [cell.lblPaymentType setTextColor:textColor];
+            
+            [cell.lblAmount setFont:font];
+            [cell.lblAmount setTextColor:textColor];
+        }
+        return cell;
+    }
+    return cell;
+}
+
+#pragma TableviewDelegate
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (tableView == self.productTable) {
+        return 2;
+    } else if (tableView == self.paymentsTable) {
+        return self.paymentTypes.count;
+    }
+    return 0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (tableView == self.productTable) {
+        return 70.0f;
+    } else if (tableView == self.paymentsTable) {
+        return 30.0f;
+    }
+    return 0.0;
 }
 
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F8D12AA52BEA1F3200A27E24 /* PaymentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D12AA42BEA1F3200A27E24 /* PaymentTableViewCell.m */; };
 		F8D758BC2BE7891A004A89F9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D758BB2BE7891A004A89F9 /* AppDelegate.m */; };
 		F8D758BF2BE7891A004A89F9 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D758BE2BE7891A004A89F9 /* SceneDelegate.m */; };
 		F8D758C22BE7891A004A89F9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D758C12BE7891A004A89F9 /* ViewController.m */; };
@@ -18,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F8D12AA32BEA1F3200A27E24 /* PaymentTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaymentTableViewCell.h; sourceTree = "<group>"; };
+		F8D12AA42BEA1F3200A27E24 /* PaymentTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaymentTableViewCell.m; sourceTree = "<group>"; };
 		F8D758B72BE7891A004A89F9 /* Pabau.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pabau.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8D758BA2BE7891A004A89F9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F8D758BB2BE7891A004A89F9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -77,6 +80,8 @@
 				F8D758CC2BE78945004A89F9 /* main.m */,
 				F8D758D32BE7F45E004A89F9 /* ItemTableViewCell.h */,
 				F8D758D42BE7F45E004A89F9 /* ItemTableViewCell.m */,
+				F8D12AA32BEA1F3200A27E24 /* PaymentTableViewCell.h */,
+				F8D12AA42BEA1F3200A27E24 /* PaymentTableViewCell.m */,
 			);
 			path = Pabau;
 			sourceTree = "<group>";
@@ -153,6 +158,7 @@
 			files = (
 				F8D758C22BE7891A004A89F9 /* ViewController.m in Sources */,
 				F8D758BC2BE7891A004A89F9 /* AppDelegate.m in Sources */,
+				F8D12AA52BEA1F3200A27E24 /* PaymentTableViewCell.m in Sources */,
 				F8D758D52BE7F45F004A89F9 /* ItemTableViewCell.m in Sources */,
 				F8D758CD2BE78945004A89F9 /* main.m in Sources */,
 				F8D758BF2BE7891A004A89F9 /* SceneDelegate.m in Sources */,

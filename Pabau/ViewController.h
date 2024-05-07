@@ -32,11 +32,14 @@ typedef NS_ENUM(NSInteger, PaymentStatus) {
 
 @property (weak, nonatomic) IBOutlet UIView *viewNextAppointment;
 
-@property (weak, nonatomic) IBOutlet UITableView *itemTable;
-
-
 @property (weak, nonatomic) IBOutlet UIView *viewStatus;
 @property (weak, nonatomic) IBOutlet UILabel *lblStatus;
+
+
+@property (weak, nonatomic) IBOutlet UITableView *productTable;
+@property (weak, nonatomic) IBOutlet UITableView *paymentsTable;
+
+
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *landscapeLeftViewTrailingConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *landscapeLeftViewBottomConstraint;
@@ -45,6 +48,8 @@ typedef NS_ENUM(NSInteger, PaymentStatus) {
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *portraitRightViewLeadingConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *portraitLeftViewBottomConstraint;
 
+@property (nonatomic, strong) NSArray *paymentTypes;
+@property (nonatomic, strong) NSArray *paymentAmounts;
 
 - (IBAction)onBookNextAppointment:(id)sender;
 - (IBAction)onBtnMail:(id)sender;
