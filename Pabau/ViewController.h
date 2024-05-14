@@ -15,6 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *backgroundImageWidthConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *textWidthConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *itemHeightConstraint;
 
 @end
 

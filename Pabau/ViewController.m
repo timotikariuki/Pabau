@@ -18,6 +18,7 @@
     
     self.btnRequestTerminal.layer.borderWidth = 1.0f;
     self.btnRequestTerminal.layer.cornerRadius = 4.0f;
+    self.btnRequestTerminal.layer.borderColor = [UIColor colorWithRed:84/255.0f green:178/255.0f blue:211/255.0f alpha:1.0f].CGColor;
     
     self.btnLearnMore.layer.cornerRadius = 4.0f;
     self.btnLearnMore.layer.borderWidth = 1.0f;
@@ -78,10 +79,12 @@
     if (isLandscape) {
         self.textWidthConstraint.constant = 0.9f;
         self.backgroundImageWidthConstraint.constant = 0.65f;
+        self.itemHeightConstraint.constant = 40.0f;
         
     } else {
         self.textWidthConstraint.constant = 0.65f;
         self.backgroundImageWidthConstraint.constant = 0.45f;
+        self.itemHeightConstraint.constant = 60.0f;
     }
     
     [self updateViewConstraints];
